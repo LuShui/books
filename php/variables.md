@@ -19,4 +19,12 @@
 		过调用代码将值传递给函数的局部变量。参数是在参数列表中声明的，作为函数声明的一部分
 
 
+2、文件包含
+	include，include_once 和 require,require_once
+	
+	include 和 require除了处理错误的方式不同之外，在其他方面都是相同的
+		require 生成一个致命错误（E_COMPILE_ERROR），在错误发生后脚本会停止执行。
+		include 生成一个警告（E_WARNING），在错误发生后脚本会继续执行。
 
+	include和require 重复导入同一个文件会多次重复的导入。
+	include_once和require_once 只会导入一次文件。
