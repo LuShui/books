@@ -2,7 +2,7 @@
 数组初始化
  */
 function dump($soure){
-	echo json_encode($soure).'<br/>';
+	echo json_encode($soure);
 }
 
 $array = array(1,2,3,4,5);
