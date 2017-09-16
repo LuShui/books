@@ -8,3 +8,6 @@
 
 2、缓存
 	
+
+
+3、XMLhTTpRequest
