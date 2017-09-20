@@ -105,3 +105,32 @@
 		xhr.onreadystatechange = function(){
 			console.log(xhr);
 		};
+
+
+4、跨域方案
+	1、jsonp跨域    
+		通过动态的创建script标签，再指定回调函数
+		只能是get请求，而且请求的url连接有长度限制
+
+	2、document.domain + iframe跨域（数据通信）    
+		此方案仅限主域相同，子域不同的跨域应用场景。
+		两个页面都通过js强制设置document.domain为基础主域，就实现了同域。
+
+	3、 location.hash + iframe跨域
+	
+
+	4、window.name + iframe跨域
+
+
+	5、postMessage跨域
+
+
+	6、 跨域资源共享（CORS）
+		普通跨域请求：只服务端设置Access-Control-Allow-Origin即可，前端无须设置，
+		若要带cookie请求：前后端都需要设置。   
+			前端设置：cookiexhr.withCredentials = true 设置携带cookie
+			后端设置：Access-Control-Allow-Credentials: true	设置允许cookie
+					  Access-Control-Allow-Origin: http://www.lushui.com   设置允许跨域访问的域名
+
+
+
