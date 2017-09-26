@@ -132,5 +132,39 @@
 			后端设置：Access-Control-Allow-Credentials: true	设置允许cookie
 					  Access-Control-Allow-Origin: http://www.lushui.com   设置允许跨域访问的域名
 
+5、浏览器输入URL后发生的事情
+	1、域名解析：查询DNS获得对应的IP地址
+		a:查找浏览器缓存,浏览器会检查缓存中有没有这个域名对应的解析过的IP地址，如果缓存中有，这个解析过程就将结束
+		b:查找操作系统缓存,如果用户的浏览器缓存中没有，浏览器会从hosts文件查找是否有存储DNS信息，查找是否有目标域名和对应的IP地址
+		c:查找路由器缓存,如果系统缓存中也找不到，那么查询请求就会发向路由器，路由器一般会有自己的DNS缓存
+		d:查找DNS 缓存,如果路由器缓存中也找不到，那么就查询ISP DNS 缓存服务器了
+		e:迭代查询,如果前面都找不到DNS缓存的话,
+			本地 DNS服务器将该请求转发到互联网上的根域,
+			根域将所要查询域名中的顶级域（比如要查询www.baidu,com，该域名的顶级域就是com）的服务器IP地址返回到本地DNS。
+			本地DNS根据返回的IP地址，再向顶级域（就是com域）发送请求， com域服务器再将域名中的二级域（即www.baidu.com中的baidu.com）的IP地址返回给本地DNS。
+			本地DNS再向二级域发送请求进行查询。
+			之后不断重复这样的过程，直到本地DNS服务器得到最终的查询结果，并返回到主机。这时候主机才能通过域名访问该网站。
+
+	2、确认好了IP和端口号，则向该IP地址对应的服务器的该端口号发起TCP连接请求（3次握手）
+	3、三次握手成功后，开始通讯，进行数据传输
+	4、浏览器渲染界面，展示界面。与用户进行交互
+	5、窗口关闭，tcp链接结束。
+
+
+6、浏览器的渲染原理简介
+	1、解析（html，css，JavaScript）解析，
+		HTML解析生成DOM tree ， css解析生成css rule tree，JavaScript通过api操作dom和css
+		
+	2、渲染界面
+		解析完成之后，浏览器引擎会通过DOM Tree 和 CSS Rule Tree 来构造 Rendering Tree
+		渲染流程
+			1、计算css属性
+			2、构建	Rendering Tree
+			3、Layout （布局）
+			4、开始渲染
+
+
+	
+
 
 
