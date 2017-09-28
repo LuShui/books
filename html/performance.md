@@ -190,7 +190,80 @@
 			4、开始渲染
 
 
-	
+7、BFC（块级格式化上下文）
+	它是一个独立的渲染区域，只有Block-level box参与， 它规定了内部的Block-level Box如何布局，并且与这个区域外部毫不相干
+
+	BFC布局规则
+		1.内部的Box会在垂直方向，一个接一个地放置。
+		2.Box垂直方向的距离由margin决定。属于同一个BFC的两个相邻Box的margin会发生重叠。
+		3.每个元素的margin box的左边， 与包含块border box的左边相接触(对于从左往右的格式化，否则相反)。即使存在浮动也是如此。
+		4.BFC的区域不会与float box重叠。
+		5.BFC就是页面上的一个隔离的独立容器，容器里面的子元素不会影响到外面的元素。反之也如此。
+		6.计算BFC的高度时，浮动元素也参与计算
+
+	哪些元素会生成BFC
+		1.根元素
+		2.float属性不为none
+		3.position为absolute或fixed
+		4.display为inline-block, table-cell, table-caption, flex, inline-flex
+		5.overflow不为visible
+
+	BFC作用
+		1.清除浮动
+		2.防止 margin 重叠
+		3.多栏布局的一种方式
 
 
+8、JavaScript闭包
+	闭包就是能够读取其他函数作用域内变量的函数。
+	正常情况下无法获取到函数作用域内变量的值，但是通过闭包可以获取到函数作用域内的值。
 
+
+9、关于meta标签
+	name属性：name属性主要用于描述网页，与之对应的属性值为content，content中的内容主要是便于搜索引擎机器人查找信息和分类信息用的。
+
+		keywords用来告诉搜索引擎你网页的关键字是什么
+		<meta name="keywords" content="science,education,culture,politics,ecnomics，relationships,entertaiment,human">
+
+		description用来告诉搜索引擎你的网站主要内容
+		<meta name="description"content="Thispageisaboutthemeaningofscience,education,culture.">
+		
+		robots用来告诉搜索机器人哪些页面需要索引，哪些页面不需要索引
+			content的参数有all,none,index,noindex,follow,nofollow。默认是all。
+		<meta name="robots"content="none">
+
+		标注网页的作者
+		<meta name="author" content="root,root@xxxx.com">
+
+		告诉浏览器你的渲染模式
+		<meta name="renderer" content="webkit">
+
+		viewport(视图模式）
+		<meta name="viewport" content="width=device-width,initial-scale=1"/>
+
+
+	http-equiv属性：
+		
+		告诉浏览器渲染模式
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		
+		用于设定网页的到期时间。一旦网页过期，必须到服务器上重新传输。
+		<meta http-equiv="expires"content="Fri,01Jan201618:18:18GMT">
+
+		禁止浏览器从本地计算机的缓存中访问页面内容
+		<meta http-equiv="Pragma" content="no-cache">
+
+		自动刷新并指向新页面。
+		<meta http-equiv="Refresh" content="2;URL=http://www.baidu.com">
+
+		如果网页过期，那么存盘的cookie将被删除。
+		<meta http-equiv="Set-Cookie"content="cookievalue=xxx;expires=Friday,12-Jan-200118:18:18GMT；path=/">
+
+		强制页面在当前窗口以独立页面显示
+		<meta http-equiv="Window-target" content="_blank">
+
+		设定页面使用的字符集
+		<meta http-equiv="content-Type" content="text/html;charset=gb2312">
+
+		显示语言的设定
+		<meta http-equiv="Content-Language" content="zh-cn"/>
