@@ -89,8 +89,134 @@
 			Person.prototype.isPrototypeOf(p2) //判断Person.prototype是否是p2的原型
 			Object.getPrototypeOf(p2)          //获取P2的原型
 
-		问题：所有的实例砸默认情况下的结构都是一致的，没有单独的私有属性。
+		问题：所有的实例在默认情况下的结构都是一致的，没有单独的私有属性。
 
 
-	4、
+	4、组合使用构造函数模式和原型模式（最常用的方式）
+		集构造函数模式与原型模式两家之长的方式创建对象，既可以拥有自己的私有属性，同时也可以拥有共享的公共方法。
 
+	5、动态原型模式
+		通过检查某个函数是否存在，不存在则将函数添加到原型上。
+
+	6、寄生构造模式
+		创建一个函数，在函数中创建一个新对象，并以相应的属性和方法初始化新对象，最后通过return返回新对象。
+		该方式和工厂模式类似
+
+	7、稳妥对象模式
+		前提：不能使用this和new光建子。
+		定义一个函数，创建一个空对象。并以相应的属性和方法初始化新对象，最后通过return返回新对象。函数的结果就需要创建的对象。
+
+
+
+
+
+3、继承
+	JavaScript只支持实现继承，不支持接口继承。而且继承是通过原型链实现的。。
+
+	1、原型链继承
+		将子类的原型指向需要继承的类的一个实例。
+		function Person(){
+			this.name = 'name';
+		}
+		Person.prototype.myname = function(){
+			console.log(this.name);
+		}
+		function SubPerson(){
+			//重写了Person的属性
+			this.name = 'subname';
+		}
+		SubPerson.prototype = new Person();
+		let sub= new SubPerson();
+		//继承了Person类的属性和方法
+		sub.myname();//subname
+
+	2、借用构造函数继承
+		在子类中调用父类的构造函数，并修改this指向。将父类的this指向为子类
+		function Person(){
+			this.name = 'php';
+		}
+		function subPerson(){
+			Person.call(this);
+		}
+		let sub = new subPerson();
+		console.log(sub.name);
+
+		缺点：
+			1、只是调用了构造函数，原型上的属性或者方法没有被继承
+			2、由于原型指向不一样，所以  instanceof  关键字判断结果为false
+
+
+	3、组合继承（原型链继承和借用构造函数继承组合模式）
+		function Person(){
+			this.name = 'php';
+		}
+		Person.prototype.sayname = function(){
+			console.log(this.name);
+		}
+		function subPerson(){
+			Person.call(this);
+		}
+		subPerson.prototype = new Person();
+		let sub = new subPerson();
+		sub.sayname();
+
+		缺点：会调用两次父类的方法
+
+
+	4、原型式继承 （与Object.create()类似）
+		function object(obj){
+			function O(){};
+			O.prototype = obj;
+			let o = new O();
+			return o;
+		}
+		let json = {
+			'name':'php',
+			'array':[1,2,3,4,5]
+		}
+		let sub = object(json);
+		console.log(json);//{name: "php", array: Array[5]}
+
+	5、寄生式继承 （在原型式继承的方案上再加以改进的一种方式）
+		function object(obj){
+			function O(){};
+			O.prototype = obj;
+			let o = new O();
+			return o;
+		}
+		let json = {
+			'name':'php',
+			'array':[1,2,3,4,5]
+		}
+		function subPerson(obj){
+			let newobj = object(obj);
+			newobj.say = function(){
+
+			}
+		}
+		let sub = subPerson(json);
+
+	6、寄生组合继承 （集众家之长的方案，比较普遍的一种方式）
+		function object(obj){
+			function O(){};
+			O.prototype = obj;
+			let o = new O();
+			return o;
+		}
+		function innerobj(supcls,subcls){
+			var prototype = object(supcls.prototype);
+			prototype.constructor = subcls;
+			subcls.prototype = prototype;
+		}
+		function Person(){
+			this.name = 'name';
+		}
+		Person.prototype.myname = function(){
+			console.log(this.name);
+		}
+		function SubPerson(){
+			Person.call(this);
+		}
+		innerobj(Person,SubPerson);
+		let p = new SubPerson();
+		p.myname();
