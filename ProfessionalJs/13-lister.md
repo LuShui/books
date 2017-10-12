@@ -15,3 +15,20 @@
 		2、Dom2
 			ele.addEventListener()
 			ele.removeEventListener()
+
+
+
+from表单
+	一些属性和方法
+	acceptCharset 	字符集
+	action	        接受请求的url
+	elements		表单中所有控件的集合
+	entype			请求的编码类型
+	length			表单中所有控件数量
+	method			http请求类型，get。post
+	name			表单名称
+	reset() 		重置表单
+	submit() 		提交表单
+	target			发送请求和接受响应的窗口
+
+
