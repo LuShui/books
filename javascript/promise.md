@@ -162,9 +162,13 @@ Promise
                 document.body.appendChild(script);
             });
             return promiss;
-        }        
+        }  
 
 
-
-
-     
+    方法汇总
+        Promise.prototype.then()    该方法会返回一个新的promiss对象，为promiss对象设置回调函数
+        Promise.prototype.catch()   该方法会返回一个新的promiss对象，为promiss对象设置报错的回到函数
+        Promise.all()               将多个promiss对象汇总成一个promiss对象，新的promiss对象的状态依赖于所有的promiss对象的值
+        Promise.race()              将多个promiss对象汇总成一个promiss对象，新promiss对象的状态取决于第一个promiss对象的值
+        Promise.resolve()           将一个对象转为promiss对象，默认状态为resolve;
+        Promise.reject()            将一个对象转为promiss对象，默认状态为reject;
