@@ -30,6 +30,34 @@ class:定义类的关键字
         person.logsex();//man
 
 
+
+Class 的静态方法
+    类相当于实例的原型，所有在类中定义的方法，都会被实例继承。如果在一个方法前，加上static关键字，就表示该方法不会被实例继承，而是直接通过类来调用，这就称为“静态方法”。
+         class Person{
+            constructor(name = 'es6',age = 6,sex = 'man'){
+                this.name = name;
+                this.age = age;
+                this.sex = sex;
+            }
+            static logname(){
+                console.log(this.name);//this指向Person
+            }
+        }
+        Person.logname();
+
+
+    
+注：
+    class定义的方法或者属性默认都是声明在原型上的，只有显示声明定义在this上，才不是定义在原型上面
+
+    类不存在变量提升
+         let p = new Person; //Person is not defined
+         class Person{}
+
+    
+
+
+
  extends：类的继承
 
     class Man extends Person{
@@ -61,7 +89,7 @@ class:定义类的关键字
     getPrototypeOf()获取父类
          console.log(Object.getPrototypeOf(meobj));//Object{}
 
-    super 关键字
+    super 关键字 ES6 要求，子类的构造函数必须执行一次super函数
         1、当super当函数使用时，表示父类的构造方法
         2、当super当对象调用方法时，表示父类的对象。同时会绑定子类的this对象
         class Man extends Person{
@@ -72,32 +100,3 @@ class:定义类的关键字
             }
         }
         let man = new Man();
-
-
-    静态属性和静态方法
-        静态属性：
-            通过直接定义在类上的属性是静态属性
-        静态方法
-            通过static关键字定义
-
-        静态属性与静态方法都无法继承
-        class Person{
-            constructor(name = 'es6',age = 6,sex = 'man'){
-                this.name = name;
-                this.age = age;
-                this.sex = sex;
-            }
-            static maek(){
-                console.log('make');
-            }
-        }
-        Person.base = 'base';
-
-        class Man extends Person{
-            constructor(){
-                super();
-            }
-        }
-        let man = new Man();
-        console.log(man.base);//undefined
-        man.make();//man.make is not a function
