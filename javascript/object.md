@@ -1,14 +1,14 @@
 1、属性的简洁表示法
         ES6 允许直接写入变量和函数，作为对象的属性和方法
             let name = 'javascript';
-            let person = {name};  =》    let person = {name:'javascript'};
+            let person = {name};     相等于    let person = {name:'javascript'};
             console.log(person);//{name: "javascript"}
 
             let person = {
                 name(){
                     console.log('javascript');
                 }
-             }      ====》
+             } 
             let person = {
                 name:function(){
                     console.log('javascript');
@@ -72,3 +72,22 @@
             返回一个数组，成员是参数对象自身的（不含继承的）所有可遍历（enumerable）属性的键值对数组
 
     9、Object.getOwnPropertyDescriptors方法，返回指定对象所有自身属性（非继承属性）的描述对象
+            let p = {
+                'name':'javascript'
+            }
+            let des = Object.getOwnPropertyDescriptors(p);
+            console.log(des); 
+                {
+                    name:{
+                        configurable:true
+                        enumerable:true
+                        value:"javascript"
+                        writable:true     
+                    }
+                }
+
+    10、super 关键字
+        this关键字总是指向函数所在的当前对象，
+        super关键字指向当前对象的原型对象
+            super关键字表示原型对象时，只能用在对象的方法之中，用在其他地方都会报错
+
