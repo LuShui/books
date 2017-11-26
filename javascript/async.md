@@ -1,5 +1,4 @@
-async.md
-	ES2017 标准引入了 async 函数，使得异步操作变得更加方便。它的本质是 Generator 函数的语法糖。
+ES2017 标准引入了 async 函数，使得异步操作变得更加方便。它的本质是 Generator 函数的语法糖。
 
 	和Generator相比
 		* 替换成了 async
