@@ -8,3 +8,7 @@ xampp 环境集成redis
 			对应 	php							5.6  
 					PHP Extension Build			API20131226,TS,VC11
 					Architecture				x86
+
+	3、在 php.ini 中添加拓展
+		extension=php_igbinary.dll  
+		extension=php_redis.dll 
