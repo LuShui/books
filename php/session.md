@@ -14,5 +14,7 @@ session
 
 	session 内置函数
 		session_abort()   		结束会话且不保存sessionid
-		
-
+		session_cache_expire()  返回或者设置当前会话的时长，单位为分钟
+		session_commit()/session_write_close()   关闭会话
+		session_destroy() 		销毁一个会话
+		session_encode() 		将当前会话编码成一个字符串 
