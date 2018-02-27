@@ -21,13 +21,11 @@ css盒模型
 
 
 
-
 隐藏元素的方式
 	1、opacity  	设置不透明度为0   IE9以前的版本   filter:Alpha(opacity=50)
 	2、visibility 	设置元素是否可见   hidden
 	3、display  	设置display none
 	4、position  	定位到窗口之外   top:-999px;
-
 
 
 
@@ -52,7 +50,6 @@ Grid布局（网格布局）
 			设置行和列的大小，在行轨道或列轨道两边是网格线。
 			track-size: 轨道大小，可以使用css长度，百分比或用分数（用fr单位）。
 			line-name: 网格线名字，你可以选择任何名字
-
 
 
 table布局
@@ -81,14 +78,10 @@ table布局
 			hide：指定当表格的单元格无内容时，隐藏该单元格的边框。
 			show：指定当表格的单元格无内容时，显示该单元格的边框。
 
-
-	
 	
 元素居中
 	1、通过绝对定位
 	2、flex
-
-
 
 
 实现两栏布局有哪些方法
@@ -98,3 +91,4 @@ table布局
 	4、通过columns布局
 	5、table布局
 	6、grid布局
+	
